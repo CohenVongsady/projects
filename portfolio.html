@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Lee — Portfolio</title>
+<style>
+  :root{
+    --bg: #101014;
+    --panel: #17171d;
+    --text: #eceef1;
+    --muted: #9a9ba5;
+    --accent: #7dd8c6;
+    --line: #26262f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height:1.6;
+  }
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  header{
+    padding:96px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  header .eyebrow{
+    color:var(--accent);
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  header h1{
+    font-size:44px;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  header p.role{
+    color:var(--muted);
+    font-size:18px;
+    margin:0 0 22px;
+  }
+  header p.bio{
+    max-width:560px;
+    color:var(--text);
+    opacity:.9;
+  }
+  .links{margin-top:22px; display:flex; gap:20px; font-size:15px;}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  section h2{
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 28px;
+  }
+
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+  }
+  .tabs button{
+    font-family:inherit;
+    font-size:13px;
+    color:var(--muted);
+    background:transparent;
+    border:1px solid var(--line);
+    padding:7px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:border-color .15s, color .15s, background .15s;
+  }
+  .tabs button:hover{
+    color:var(--text);
+    border-color:var(--muted);
+  }
+  .tabs button.active{
+    color:var(--bg);
+    background:var(--accent);
+    border-color:var(--accent);
+  }
+
+  .project{
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .project:first-of-type{border-top:none;}
+  .project.hidden{display:none;}
+  .project.hidden + .project{border-top:none;}
+  .project h3{margin:0 0 6px; font-size:19px;}
+  .project p{margin:0; color:var(--muted); font-size:15px; max-width:440px;}
+  .project .meta{
+    color:var(--muted);
+    font-size:13px;
+    white-space:nowrap;
+    padding-top:3px;
+  }
+
+  .skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .skills span{
+    border:1px solid var(--line);
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  .edu h3{margin:0 0 6px; font-size:19px;}
+  .edu p{margin:0; color:var(--muted); font-size:15px;}
+
+  .contact p{margin:0 0 10px; font-size:15px; color:var(--muted);}
+  .contact a{color:var(--text);}
+  .contact a:hover{color:var(--accent);}
+
+  footer{
+    padding:48px 0 80px;
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  @media (max-width:600px){
+    header{padding:64px 0 40px;}
+    header h1{font-size:34px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Portfolio</div>
+    <h1>Jordan Lee</h1>
+    <p class="role">Product Designer &amp; Front-End Developer</p>
+    <p class="bio">I build clean, usable interfaces and the code behind them. Based in Seattle, currently open to freelance and full-time work.</p>
+    <div class="links">
+      <a href="mailto:jordan@example.com">jordan@example.com</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu">
+      <h3>B.S. in Computer Engineering</h3>
+      <p>University of Washington, Seattle — 2020–2024</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="tabs" role="tablist">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="dev">Electronics</button>
+      <button data-filter="design">Software</button>
+    </div>
+
+    <div class="project" data-category="dev">
+      <div>
+        <h3>Fieldnote — note-taking app</h3>
+        <p>Offline-first notes app with tag-based search, built with React and IndexedDB.</p>
+      </div>
+      <div class="meta">2025</div>
+    </div>
+
+    <div class="project" data-category="design">
+      <div>
+        <h3>Basecamp redesign</h3>
+        <p>Led a visual refresh of a project dashboard, cutting onboarding time by 30%.</p>
+      </div>
+      <div class="meta">2024</div>
+    </div>
+
+    <div class="project" data-category="dev design">
+      <div>
+        <h3>Local Harvest</h3>
+        <p>Marketplace connecting small farms to nearby buyers. Design, front end, and Stripe integration.</p>
+      </div>
+      <div class="meta">2023</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>Email: <a href="mailto:jordan@example.com">jordan@example.com</a></p>
+      <p>GitHub: <a href="#">github.com/jordanlee</a></p>
+      <p>LinkedIn: <a href="#">linkedin.com/in/jordanlee</a></p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Jordan Lee. Built by hand.
+  </footer>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tabs button');
+  const projects = document.querySelectorAll('.project');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+
+      projects.forEach(p => {
+        const cats = p.dataset.category ? p.dataset.category.split(' ') : [];
+        const show = filter === 'all' || cats.includes(filter);
+        p.classList.toggle('hidden', !show);
+      });
+    });
+  });
+</script>
+</body>
+</html>
