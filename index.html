@@ -6,12 +6,13 @@
 <title>Cohen Vongsady — Portfolio</title>
 <style>
   :root{
-    --bg: #101014;
-    --panel: #17171d;
-    --text: #eceef1;
-    --muted: #9a9ba5;
-    --accent: #7dd8c6;
-    --line: #26262f;
+    --bg: #0b0c0f;
+    --panel: #15161b;
+    --text: #e9eaed;
+    --muted: #8c8f98;
+    --accent: #b6903f;
+    --accent-dim: #6f5a2c;
+    --line: #26272e;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -20,54 +21,81 @@
     background:var(--bg);
     color:var(--text);
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    line-height:1.6;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
   }
   a{color:var(--accent); text-decoration:none;}
   a:hover{text-decoration:underline;}
   .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
 
   header{
-    padding:96px 0 56px;
+    padding:104px 0 52px;
     border-bottom:1px solid var(--line);
+    position:relative;
   }
   header .eyebrow{
     color:var(--accent);
-    font-size:13px;
-    letter-spacing:.14em;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.22em;
     text-transform:uppercase;
-    margin-bottom:14px;
+    margin-bottom:18px;
   }
   header h1{
-    font-size:44px;
-    margin:0 0 10px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight:600;
+    font-size:46px;
+    margin:0 0 12px;
     letter-spacing:-0.01em;
   }
   header p.role{
     color:var(--muted);
-    font-size:18px;
-    margin:0 0 22px;
+    font-size:17px;
+    margin:0 0 24px;
+    font-style:italic;
   }
   header p.bio{
     max-width:560px;
     color:var(--text);
-    opacity:.9;
+    opacity:.85;
+    font-size:15px;
   }
-  .links{margin-top:22px; display:flex; gap:20px; font-size:15px;}
+  .links{margin-top:26px; display:flex; gap:24px; font-size:14px;}
+  .links a{
+    color:var(--muted);
+    letter-spacing:.02em;
+    border-bottom:1px solid transparent;
+  }
+  .links a:hover{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid var(--accent);
+  }
 
-  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section{padding:60px 0; border-bottom:1px solid var(--line);}
   section:last-of-type{border-bottom:none;}
   section h2{
-    font-size:13px;
-    letter-spacing:.14em;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.22em;
     text-transform:uppercase;
-    color:var(--muted);
-    margin:0 0 28px;
+    color:var(--accent);
+    margin:0 0 30px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  section h2::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
   }
 
   .tabs{
     display:flex;
     gap:8px;
-    margin-bottom:28px;
+    margin-bottom:30px;
     flex-wrap:wrap;
   }
   .tabs button{
@@ -76,8 +104,8 @@
     color:var(--muted);
     background:transparent;
     border:1px solid var(--line);
-    padding:7px 14px;
-    border-radius:20px;
+    padding:7px 16px;
+    border-radius:3px;
     cursor:pointer;
     transition:border-color .15s, color .15s, background .15s;
   }
@@ -92,7 +120,7 @@
   }
 
   .project{
-    padding:20px 0;
+    padding:26px 0;
     border-top:1px solid var(--line);
     display:flex;
     justify-content:space-between;
@@ -102,13 +130,51 @@
   .project:first-of-type{border-top:none;}
   .project.hidden{display:none;}
   .project.hidden + .project{border-top:none;}
-  .project h3{margin:0 0 6px; font-size:19px;}
-  .project p{margin:0; color:var(--muted); font-size:15px; max-width:440px;}
+  .project .info{flex:1; min-width:240px;}
+  .project h3{
+    margin:0 0 8px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight:600;
+    font-size:20px;
+  }
+  .project p{margin:0 0 14px; color:var(--muted); font-size:15px; max-width:440px;}
   .project .meta{
     color:var(--muted);
-    font-size:13px;
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
     white-space:nowrap;
     padding-top:3px;
+  }
+
+  .project-links{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .project-links a{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    color:var(--text);
+    border:1px solid var(--line);
+    padding:6px 13px;
+    border-radius:3px;
+    transition:border-color .15s, color .15s;
+  }
+  .project-links a:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+    text-decoration:none;
+  }
+  .project-links a .arrow{
+    color:var(--accent);
+    font-size:12px;
+    transition:transform .15s;
+  }
+  .project-links a:hover .arrow{
+    transform:translate(2px,-2px);
   }
 
   .skills{
@@ -119,27 +185,38 @@
   .skills span{
     border:1px solid var(--line);
     padding:6px 12px;
-    border-radius:20px;
+    border-radius:3px;
     font-size:13px;
     color:var(--muted);
   }
 
-  .edu h3{margin:0 0 6px; font-size:19px;}
+  .edu h3{
+    margin:0 0 6px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight:600;
+    font-size:19px;
+  }
   .edu p{margin:0; color:var(--muted); font-size:15px;}
+  .edu p .school{
+    color:var(--accent);
+    font-weight:600;
+  }
 
-  .contact p{margin:0 0 10px; font-size:15px; color:var(--muted);}
-  .contact a{color:var(--text);}
-  .contact a:hover{color:var(--accent);}
+  .contact p{margin:0 0 12px; font-size:15px; color:var(--muted);}
+  .contact a{color:var(--text); border-bottom:1px solid var(--line);}
+  .contact a:hover{color:var(--accent); border-bottom-color:var(--accent);}
 
   footer{
     padding:48px 0 80px;
     color:var(--muted);
-    font-size:14px;
+    font-size:13px;
+    letter-spacing:.03em;
   }
 
   @media (max-width:600px){
-    header{padding:64px 0 40px;}
-    header h1{font-size:34px;}
+    header{padding:72px 0 40px;}
+    header h1{font-size:32px;}
+    .project{padding:22px 0;}
   }
 </style>
 </head>
@@ -149,17 +226,19 @@
   <header>
     <div class="eyebrow">Portfolio</div>
     <h1>Cohen Vongsady</h1>
-    <p class="role">Electrical &amp; Computering Engineering Student</p>
-    <p class="bio">I am a current student at the University of Washington. Driven by a growth mindset, I actively seek new opportunities that challenge me and allow me to learn. As an engineer, I am always looking to contribute my knowledge and experience to meaningful projects. </p>
+    <p class="role">Electrical &amp; Computer Engineering Student</p>
+    <p class="bio">I am a current student at the University of Washington. Driven by a growth mindset, I actively seek new opportunities that challenge me and allow me to learn. As an engineer, I am always looking to contribute my knowledge and experience to meaningful projects.</p>
     <div class="links">
+      <a href="mailto:cb.vongsady@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/cohenbv">LinkedIn</a>
     </div>
   </header>
 
   <section>
     <h2>Education</h2>
     <div class="edu">
-      <h3>B.S. in Electrical & Computering Engineering</h3>
-      <p>University of Washington, Seattle — 2026–2030</p>
+      <h3>B.S. in Electrical &amp; Computer Engineering</h3>
+      <p><span class="school">University of Washington</span>, Seattle — 2026–2030</p>
     </div>
   </section>
 
@@ -173,13 +252,16 @@
     </div>
 
     <div class="project" data-category="design">
-      <div>
+      <div class="info">
         <h3>UFC comparison/prediction app</h3>
-        <p>Compare stats and predict fights with ufc fighters.</p>
+        <p>Compare stats and predict fights with UFC fighters.</p>
+        <div class="project-links">
+          <a href="#" target="_blank" rel="noopener">Repository <span class="arrow">↗</span></a>
+          <a href="#" target="_blank" rel="noopener">Demo <span class="arrow">↗</span></a>
+        </div>
       </div>
-      <div class="meta"> AUG 2026</div>
+      <div class="meta">Aug 2026</div>
     </div>
-
 
   </section>
 
@@ -187,8 +269,8 @@
     <h2>Contact</h2>
     <div class="contact">
       <p>Email: <a href="mailto:cb.vongsady@gmail.com">cb.vongsady@gmail.com</a></p>
-      <p>Phone: <a href="#206-966-1633">206-966-1633</a></p>
-      <p>LinkedIn: <a href="#https://www.linkedin.com/in/cohenbv">https://www.linkedin.com/in/cohenbv</a></p>
+      <p>Phone: <a href="tel:+12069661633">206-966-1633</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/cohenbv" target="_blank" rel="noopener">linkedin.com/in/cohenbv</a></p>
     </div>
   </section>
 
@@ -217,3 +299,4 @@
 </script>
 </body>
 </html>
+
